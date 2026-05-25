@@ -1,0 +1,32 @@
+{
+  "fileType": "pcbforge-project",
+  "version": "0.6.0",
+  "savedAt": "2026-05-16T00:00:00.000Z",
+  "board": {
+    "name": "NE555 LED Blinker Smoke Test",
+    "width": 760,
+    "height": 460,
+    "components": [],
+    "traces": [],
+    "vias": [],
+    "mountingHoles": [],
+    "silkscreenItems": [],
+    "copperZones": [],
+    "nets": [
+      { "id": "net_gnd", "name": "GND", "color": "#111827" },
+      { "id": "net_vcc", "name": "VCC", "color": "#dc2626" },
+      { "id": "net_signal_1", "name": "SIGNAL_1", "color": "#2563eb" }
+    ],
+    "footprints": [],
+    "designRules": {
+      "minTraceWidth": 4,
+      "minClearance": 16,
+      "minDrill": 6,
+      "minViaDiameter": 12,
+      "copperZoneClearance": 16,
+      "copperToBoardEdge": 20,
+      "minSilkscreenTextSize": 10
+    }
+  },
+  "liveLibraryComponents": []
+}

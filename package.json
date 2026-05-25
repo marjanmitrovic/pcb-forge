@@ -1,0 +1,82 @@
+{
+  "name": "pcb-forge",
+  "version": "0.1.0",
+  "description": "PCB Forge desktop PCB design editor",
+  "homepage": "https://github.com/marjanmitrovic/pcb-forge",
+  "author": {
+    "name": "Marjan Mitrovic",
+    "email": "marjan.posao@gmail.com"
+  },
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "desktop": "npm run build && electron electron/main.cjs",
+    "dist:linux": "npm run build && electron-builder --linux AppImage deb",
+    "dist:appimage": "npm run build && electron-builder --linux AppImage",
+    "dist:deb": "npm run build && electron-builder --linux deb",
+    "dist:win": "npm run build && electron-builder --win nsis portable",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "electron": "^42.1.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.pcbforge.app",
+    "productName": "PCB Forge",
+    "copyright": "Copyright © 2026 Marjan Mitrovic",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "server/**/*",
+      "build/icon.png",
+      "build/icon.ico",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development",
+      "maintainer": "Marjan Mitrovic <marjan.posao@gmail.com>",
+      "synopsis": "PCB design editor",
+      "description": "PCB Forge is a desktop PCB design editor with schematic workspace, component catalog, routing, DRC, BOM and manufacturing export.",
+      "icon": "build/icon.png"
+    },
+    "deb": {
+      "maintainer": "Marjan Mitrovic <marjan.posao@gmail.com>"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

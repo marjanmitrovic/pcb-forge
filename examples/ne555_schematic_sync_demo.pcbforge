@@ -1,0 +1,83 @@
+{
+  "format": "pcbforge",
+  "version": "0.6.0",
+  "createdBy": "PCB Forge stabilization package",
+  "project": {
+    "name": "NE555 LED Blinker Schematic Sync Demo",
+    "board": {
+      "name": "NE555 LED Blinker Demo",
+      "width": 900,
+      "height": 520,
+      "components": [],
+      "traces": [],
+      "vias": [],
+      "nets": [
+        { "id": "net_gnd", "name": "GND", "color": "#111827" },
+        { "id": "net_vcc", "name": "VCC", "color": "#dc2626" },
+        { "id": "net_out", "name": "OUT", "color": "#2563eb" },
+        { "id": "net_disch", "name": "DISCH", "color": "#ea580c" },
+        { "id": "net_thresh_trig", "name": "THRESH_TRIG", "color": "#9333ea" },
+        { "id": "net_ctrl", "name": "CTRL", "color": "#0891b2" }
+      ],
+      "footprints": [],
+      "silkscreenTexts": [],
+      "mountingHoles": [],
+      "copperZones": []
+    },
+    "schematic": {
+      "symbols": [
+        { "id": "sch_u1", "type": "ic", "name": "U1", "value": "NE555P", "x": 320, "y": 180, "pins": [
+          { "id": "1", "name": "GND", "netId": "net_gnd" },
+          { "id": "2", "name": "TRIG", "netId": "net_thresh_trig" },
+          { "id": "3", "name": "OUT", "netId": "net_out" },
+          { "id": "4", "name": "RESET", "netId": "net_vcc" },
+          { "id": "5", "name": "CTRL", "netId": "net_ctrl" },
+          { "id": "6", "name": "THRESH", "netId": "net_thresh_trig" },
+          { "id": "7", "name": "DISCH", "netId": "net_disch" },
+          { "id": "8", "name": "VCC", "netId": "net_vcc" }
+        ] },
+        { "id": "sch_r1", "type": "resistor", "name": "R1", "value": "10k", "x": 150, "y": 110, "pins": [
+          { "id": "1", "name": "1", "netId": "net_vcc" },
+          { "id": "2", "name": "2", "netId": "net_disch" }
+        ] },
+        { "id": "sch_r2", "type": "resistor", "name": "R2", "value": "330R", "x": 520, "y": 230, "pins": [
+          { "id": "1", "name": "1", "netId": "net_out" },
+          { "id": "2", "name": "2", "netId": "net_led_a" }
+        ] },
+        { "id": "sch_c1", "type": "capacitor", "name": "C1", "value": "10uF", "x": 150, "y": 260, "pins": [
+          { "id": "1", "name": "+", "netId": "net_thresh_trig" },
+          { "id": "2", "name": "-", "netId": "net_gnd" }
+        ] },
+        { "id": "sch_c2", "type": "capacitor", "name": "C2", "value": "100nF", "x": 510, "y": 110, "pins": [
+          { "id": "1", "name": "1", "netId": "net_vcc" },
+          { "id": "2", "name": "2", "netId": "net_gnd" }
+        ] },
+        { "id": "sch_d1", "type": "led", "name": "D1", "value": "LED_RED", "x": 690, "y": 230, "pins": [
+          { "id": "A", "name": "A", "netId": "net_led_a" },
+          { "id": "K", "name": "K", "netId": "net_gnd" }
+        ] },
+        { "id": "sch_j1", "type": "connector", "name": "J1", "value": "POWER_IN", "x": 120, "y": 390, "pins": [
+          { "id": "1", "name": "VCC", "netId": "net_vcc" },
+          { "id": "2", "name": "GND", "netId": "net_gnd" }
+        ] }
+      ],
+      "wires": [
+        { "id": "w1", "fromSymbolId": "sch_j1", "fromPinId": "1", "toSymbolId": "sch_u1", "toPinId": "8", "netId": "net_vcc" },
+        { "id": "w2", "fromSymbolId": "sch_j1", "fromPinId": "2", "toSymbolId": "sch_u1", "toPinId": "1", "netId": "net_gnd" },
+        { "id": "w3", "fromSymbolId": "sch_u1", "fromPinId": "3", "toSymbolId": "sch_r2", "toPinId": "1", "netId": "net_out" },
+        { "id": "w4", "fromSymbolId": "sch_r2", "fromPinId": "2", "toSymbolId": "sch_d1", "toPinId": "A", "netId": "net_led_a" },
+        { "id": "w5", "fromSymbolId": "sch_d1", "fromPinId": "K", "toSymbolId": "sch_j1", "toPinId": "2", "netId": "net_gnd" }
+      ],
+      "nets": [
+        { "id": "net_gnd", "name": "GND", "color": "#111827" },
+        { "id": "net_vcc", "name": "VCC", "color": "#dc2626" },
+        { "id": "net_out", "name": "OUT", "color": "#2563eb" },
+        { "id": "net_led_a", "name": "LED_A", "color": "#16a34a" },
+        { "id": "net_disch", "name": "DISCH", "color": "#ea580c" },
+        { "id": "net_thresh_trig", "name": "THRESH_TRIG", "color": "#9333ea" },
+        { "id": "net_ctrl", "name": "CTRL", "color": "#0891b2" }
+      ]
+    },
+    "liveLibraryComponents": []
+  }
+}

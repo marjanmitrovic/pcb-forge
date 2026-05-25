@@ -1,0 +1,651 @@
+{
+  "format": "pcbforge",
+  "version": "0.6.0",
+  "board": {
+    "name": "NE555 LED Blinker Demo",
+    "width": 900,
+    "height": 560,
+    "components": [
+      {
+        "id": "U1",
+        "type": "ic",
+        "name": "U1",
+        "value": "NE555P",
+        "packageName": "DIP-8",
+        "manufacturer": "Texas Instruments",
+        "mpn": "NE555P",
+        "supplier": "Nexar / Octopart demo",
+        "description": "Single precision timer, PDIP-8",
+        "x": 360,
+        "y": 260,
+        "rotation": 0,
+        "bodyWidth": 90,
+        "bodyHeight": 150,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "U1",
+            "x": -65,
+            "y": -60,
+            "width": 18,
+            "height": 18,
+            "pinName": "GND",
+            "netId": "net_gnd"
+          },
+          {
+            "id": "2",
+            "componentId": "U1",
+            "x": -65,
+            "y": -20,
+            "width": 18,
+            "height": 18,
+            "pinName": "TRIG",
+            "netId": "net_thresh_trig"
+          },
+          {
+            "id": "3",
+            "componentId": "U1",
+            "x": -65,
+            "y": 20,
+            "width": 18,
+            "height": 18,
+            "pinName": "OUT",
+            "netId": "net_out"
+          },
+          {
+            "id": "4",
+            "componentId": "U1",
+            "x": -65,
+            "y": 60,
+            "width": 18,
+            "height": 18,
+            "pinName": "RESET",
+            "netId": "net_vcc"
+          },
+          {
+            "id": "5",
+            "componentId": "U1",
+            "x": 65,
+            "y": 60,
+            "width": 18,
+            "height": 18,
+            "pinName": "CTRL",
+            "netId": "net_gnd"
+          },
+          {
+            "id": "6",
+            "componentId": "U1",
+            "x": 65,
+            "y": 20,
+            "width": 18,
+            "height": 18,
+            "pinName": "THRESH",
+            "netId": "net_thresh_trig"
+          },
+          {
+            "id": "7",
+            "componentId": "U1",
+            "x": 65,
+            "y": -20,
+            "width": 18,
+            "height": 18,
+            "pinName": "DISCH",
+            "netId": "net_disch"
+          },
+          {
+            "id": "8",
+            "componentId": "U1",
+            "x": 65,
+            "y": -60,
+            "width": 18,
+            "height": 18,
+            "pinName": "VCC",
+            "netId": "net_vcc"
+          }
+        ]
+      },
+      {
+        "id": "R1",
+        "type": "resistor",
+        "name": "R1",
+        "value": "10k\u03a9",
+        "packageName": "R_Axial_DIN0207_L6.3mm_P7.62mm",
+        "mpn": "CFR-25JB-52-10K",
+        "x": 535,
+        "y": 160,
+        "rotation": 0,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "R1",
+            "x": -50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "1",
+            "netId": "net_vcc"
+          },
+          {
+            "id": "2",
+            "componentId": "R1",
+            "x": 50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "2",
+            "netId": "net_disch"
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "type": "resistor",
+        "name": "R2",
+        "value": "100k\u03a9",
+        "packageName": "R_Axial_DIN0207_L6.3mm_P7.62mm",
+        "x": 535,
+        "y": 235,
+        "rotation": 0,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "R2",
+            "x": -50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "1",
+            "netId": "net_disch"
+          },
+          {
+            "id": "2",
+            "componentId": "R2",
+            "x": 50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "2",
+            "netId": "net_thresh_trig"
+          }
+        ]
+      },
+      {
+        "id": "C1",
+        "type": "capacitor",
+        "name": "C1",
+        "value": "10\u00b5F / 25V",
+        "packageName": "C_Radial_D5.0mm_P2.50mm",
+        "x": 585,
+        "y": 340,
+        "rotation": 90,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "C1",
+            "x": -35,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "+",
+            "netId": "net_thresh_trig"
+          },
+          {
+            "id": "2",
+            "componentId": "C1",
+            "x": 35,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "-",
+            "netId": "net_gnd"
+          }
+        ]
+      },
+      {
+        "id": "C2",
+        "type": "capacitor",
+        "name": "C2",
+        "value": "100nF",
+        "packageName": "C_0805",
+        "x": 225,
+        "y": 150,
+        "rotation": 0,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "C2",
+            "x": -28,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "1",
+            "netId": "net_vcc"
+          },
+          {
+            "id": "2",
+            "componentId": "C2",
+            "x": 28,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "2",
+            "netId": "net_gnd"
+          }
+        ]
+      },
+      {
+        "id": "R3",
+        "type": "resistor",
+        "name": "R3",
+        "value": "330\u03a9",
+        "packageName": "R_Axial_DIN0207_L6.3mm_P7.62mm",
+        "x": 235,
+        "y": 355,
+        "rotation": 0,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "R3",
+            "x": -50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "1",
+            "netId": "net_out"
+          },
+          {
+            "id": "2",
+            "componentId": "R3",
+            "x": 50,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "2",
+            "netId": "net_led_out"
+          }
+        ]
+      },
+      {
+        "id": "LED1",
+        "type": "led",
+        "name": "LED1",
+        "value": "RED LED",
+        "packageName": "LED_D5.0mm",
+        "x": 145,
+        "y": 355,
+        "rotation": 0,
+        "pads": [
+          {
+            "id": "A",
+            "componentId": "LED1",
+            "x": -35,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "A",
+            "netId": "net_led_out"
+          },
+          {
+            "id": "K",
+            "componentId": "LED1",
+            "x": 35,
+            "y": 0,
+            "width": 18,
+            "height": 18,
+            "pinName": "K",
+            "netId": "net_gnd"
+          }
+        ]
+      },
+      {
+        "id": "J1",
+        "type": "connector",
+        "name": "J1",
+        "value": "POWER IN",
+        "packageName": "TerminalBlock_2P_5.00mm",
+        "x": 110,
+        "y": 130,
+        "rotation": 90,
+        "pads": [
+          {
+            "id": "1",
+            "componentId": "J1",
+            "x": -25,
+            "y": 0,
+            "width": 22,
+            "height": 22,
+            "pinName": "VCC",
+            "netId": "net_vcc"
+          },
+          {
+            "id": "2",
+            "componentId": "J1",
+            "x": 25,
+            "y": 0,
+            "width": 22,
+            "height": 22,
+            "pinName": "GND",
+            "netId": "net_gnd"
+          }
+        ]
+      }
+    ],
+    "traces": [
+      {
+        "id": "T_VCC_1",
+        "netId": "net_vcc",
+        "layer": "top",
+        "width": 10,
+        "points": [
+          {
+            "x": 110,
+            "y": 105
+          },
+          {
+            "x": 225,
+            "y": 105
+          },
+          {
+            "x": 225,
+            "y": 150
+          },
+          {
+            "x": 295,
+            "y": 200
+          },
+          {
+            "x": 425,
+            "y": 200
+          },
+          {
+            "x": 485,
+            "y": 160
+          }
+        ]
+      },
+      {
+        "id": "T_VCC_2",
+        "netId": "net_vcc",
+        "layer": "top",
+        "width": 10,
+        "points": [
+          {
+            "x": 425,
+            "y": 200
+          },
+          {
+            "x": 425,
+            "y": 320
+          }
+        ]
+      },
+      {
+        "id": "T_DISCH",
+        "netId": "net_disch",
+        "layer": "top",
+        "width": 8,
+        "points": [
+          {
+            "x": 425,
+            "y": 240
+          },
+          {
+            "x": 485,
+            "y": 235
+          }
+        ]
+      },
+      {
+        "id": "T_R1_R2",
+        "netId": "net_disch",
+        "layer": "top",
+        "width": 8,
+        "points": [
+          {
+            "x": 585,
+            "y": 160
+          },
+          {
+            "x": 585,
+            "y": 235
+          },
+          {
+            "x": 485,
+            "y": 235
+          }
+        ]
+      },
+      {
+        "id": "T_TIMING",
+        "netId": "net_thresh_trig",
+        "layer": "top",
+        "width": 8,
+        "points": [
+          {
+            "x": 585,
+            "y": 235
+          },
+          {
+            "x": 585,
+            "y": 305
+          },
+          {
+            "x": 425,
+            "y": 280
+          }
+        ]
+      },
+      {
+        "id": "T_OUT",
+        "netId": "net_out",
+        "layer": "top",
+        "width": 8,
+        "points": [
+          {
+            "x": 295,
+            "y": 280
+          },
+          {
+            "x": 185,
+            "y": 355
+          }
+        ]
+      },
+      {
+        "id": "T_LED",
+        "netId": "net_led_out",
+        "layer": "top",
+        "width": 8,
+        "points": [
+          {
+            "x": 285,
+            "y": 355
+          },
+          {
+            "x": 110,
+            "y": 355
+          }
+        ]
+      },
+      {
+        "id": "T_GND_1",
+        "netId": "net_gnd",
+        "layer": "bottom",
+        "width": 10,
+        "points": [
+          {
+            "x": 110,
+            "y": 155
+          },
+          {
+            "x": 180,
+            "y": 355
+          },
+          {
+            "x": 253,
+            "y": 150
+          },
+          {
+            "x": 295,
+            "y": 200
+          },
+          {
+            "x": 550,
+            "y": 340
+          }
+        ]
+      }
+    ],
+    "vias": [
+      {
+        "id": "VIA_GND_1",
+        "x": 295,
+        "y": 200,
+        "netId": "net_gnd",
+        "fromLayer": "top",
+        "toLayer": "bottom",
+        "diameter": 22,
+        "drill": 10
+      },
+      {
+        "id": "VIA_GND_2",
+        "x": 180,
+        "y": 355,
+        "netId": "net_gnd",
+        "fromLayer": "top",
+        "toLayer": "bottom",
+        "diameter": 22,
+        "drill": 10
+      }
+    ],
+    "nets": [
+      {
+        "id": "net_gnd",
+        "name": "GND",
+        "color": "#111827"
+      },
+      {
+        "id": "net_vcc",
+        "name": "VCC",
+        "color": "#dc2626"
+      },
+      {
+        "id": "net_disch",
+        "name": "DISCH",
+        "color": "#9333ea"
+      },
+      {
+        "id": "net_thresh_trig",
+        "name": "THRESH_TRIG",
+        "color": "#0891b2"
+      },
+      {
+        "id": "net_out",
+        "name": "OUT",
+        "color": "#16a34a"
+      },
+      {
+        "id": "net_led_out",
+        "name": "LED_OUT",
+        "color": "#ea580c"
+      }
+    ],
+    "footprints": [],
+    "copperZones": [
+      {
+        "id": "ZONE_GND_BOTTOM",
+        "x": 35,
+        "y": 35,
+        "width": 830,
+        "height": 490,
+        "netId": "net_gnd",
+        "layer": "bottom",
+        "clearance": 16,
+        "opacity": 0.18
+      }
+    ],
+    "silkscreenTexts": [
+      {
+        "id": "TXT_TITLE",
+        "text": "NE555 LED BLINKER",
+        "x": 65,
+        "y": 45,
+        "size": 18,
+        "rotation": 0,
+        "layer": "top"
+      },
+      {
+        "id": "TXT_PWR",
+        "text": "+V  GND",
+        "x": 62,
+        "y": 92,
+        "size": 12,
+        "rotation": 0,
+        "layer": "top"
+      },
+      {
+        "id": "TXT_LED",
+        "text": "LED OUT",
+        "x": 80,
+        "y": 410,
+        "size": 12,
+        "rotation": 0,
+        "layer": "top"
+      },
+      {
+        "id": "TXT_VER",
+        "text": "PCB Forge demo v0.1",
+        "x": 625,
+        "y": 515,
+        "size": 12,
+        "rotation": 0,
+        "layer": "top"
+      }
+    ],
+    "mountingHoles": [
+      {
+        "id": "MH1",
+        "x": 55,
+        "y": 55,
+        "diameter": 34,
+        "drill": 30,
+        "plated": false
+      },
+      {
+        "id": "MH2",
+        "x": 845,
+        "y": 55,
+        "diameter": 34,
+        "drill": 30,
+        "plated": false
+      },
+      {
+        "id": "MH3",
+        "x": 55,
+        "y": 505,
+        "diameter": 34,
+        "drill": 30,
+        "plated": false
+      },
+      {
+        "id": "MH4",
+        "x": 845,
+        "y": 505,
+        "diameter": 34,
+        "drill": 30,
+        "plated": false
+      }
+    ],
+    "designRules": {
+      "minTraceWidth": 6,
+      "minClearance": 12,
+      "minDrill": 6,
+      "minViaDiameter": 16,
+      "zoneClearance": 16,
+      "copperToEdge": 20,
+      "minSilkscreenTextSize": 8
+    }
+  },
+  "liveLibraryComponents": [],
+  "notes": "NE555 LED blinker demo for PCB Forge 0.1 stabilization."
+}
