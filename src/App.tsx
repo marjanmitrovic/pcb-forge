@@ -19,7 +19,12 @@ import { predefinedFootprints } from "./library/footprintLibrary";
 import type { AngleMode, Board, ComponentType, CopperZone, DesignRules, Footprint, Layer, MountingHole, SilkscreenItem, PCBComponent, Point, Tool, Trace, Via } from "./model/pcb";
 import { runDrc, type DrcIssue } from "./utils/drc";
 import { exportManufacturingPackage } from "./utils/manufacturingExport";
-import { GRID, getAbsolutePads, snap, uid } from "./utils/geometry";
+import { GRID, getAbsolutePads, uid } from "./utils/geometry";
+import {
+  constrainRoutePoint as constrainPoint,
+  getLastPoint as last,
+  getOppositeLayer as oppositeLayer,
+} from "./utils/routerEngine";
 
 const BOARD_OFFSET = { x: 80, y: 80 };
 const BOARD_WIDTH = 760;
@@ -184,37 +189,6 @@ function parseProjectPayload(text: string): { board: Board; liveLibraryComponent
   };
 }
 
-function oppositeLayer(value: Layer): Layer {
-  return value === "top" ? "bottom" : "top";
-}
-
-function constrainPoint(from: Point, raw: Point, angleMode: AngleMode): Point {
-  const dx = raw.x - from.x;
-  const dy = raw.y - from.y;
-
-  if (dx === 0 && dy === 0) return raw;
-
-  if (angleMode === "orthogonal") {
-    if (Math.abs(dx) >= Math.abs(dy)) {
-      return { x: raw.x, y: from.y };
-    }
-    return { x: from.x, y: raw.y };
-  }
-
-  const angle = Math.atan2(dy, dx);
-  const step = Math.PI / 4;
-  const snappedAngle = Math.round(angle / step) * step;
-  const length = Math.sqrt(dx * dx + dy * dy);
-
-  return {
-    x: snap(from.x + Math.cos(snappedAngle) * length),
-    y: snap(from.y + Math.sin(snappedAngle) * length),
-  };
-}
-
-function last<T>(items: T[]): T | null {
-  return items.length ? items[items.length - 1] : null;
-}
 
 export default function App() {
   const [board, setBoard] = useState<Board>(initialBoard);
