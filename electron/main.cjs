@@ -2,13 +2,16 @@ const { app, BrowserWindow } = require("electron");
 const path = require("node:path");
 const http = require("node:http");
 const { pathToFileURL } = require("node:url");
+const fs = require("node:fs");
 
 let mainWindow;
 
 const API_PORT = 5174;
 const API_URL = `http://localhost:${API_PORT}`;
+const PROJECT_ROOT = path.resolve(__dirname, "..");
 
 app.commandLine.appendSwitch("disable-gpu");
+app.commandLine.appendSwitch("disable-software-rasterizer");
 
 function checkApiServer() {
   return new Promise((resolve) => {
@@ -42,8 +45,13 @@ async function startApiServerIfNeeded() {
     return;
   }
 
-  const serverPath = path.join(app.getAppPath(), "server", "index.js");
+  const serverPath = path.join(PROJECT_ROOT, "server", "index.js");
   console.log("Starting PCB Forge Catalog API from:", serverPath);
+
+  if (!fs.existsSync(serverPath)) {
+    console.warn("Catalog API server not found. Continuing without local catalog API.");
+    return;
+  }
 
   await import(pathToFileURL(serverPath).href);
 }
@@ -62,19 +70,34 @@ function createWindow() {
     },
   });
 
-  const indexPath = path.join(app.getAppPath(), "dist", "index.html");
+  const indexPath = path.join(PROJECT_ROOT, "dist", "index.html");
   console.log("Loading:", indexPath);
 
-  mainWindow.loadFile(indexPath);
-  //mainWindow.webContents.openDevTools({ mode: "detach" });
+  if (!fs.existsSync(indexPath)) {
+    console.error("Frontend build not found:", indexPath);
+    mainWindow.loadURL(
+      "data:text/html;charset=utf-8," +
+        encodeURIComponent(`
+          <html>
+            <body style="font-family: sans-serif; background:#0f172a; color:white; padding:40px">
+              <h1>PCB Forge build not found</h1>
+              <p>Run <code>npm run build</code> first.</p>
+              <p>Expected: ${indexPath}</p>
+            </body>
+          </html>
+        `)
+    );
+  } else {
+    mainWindow.loadFile(indexPath);
+  }
 
-mainWindow.webContents.on("did-fail-load", (_event, errorCode, errorDescription, validatedURL) => {
-  console.error("Failed to load:", errorCode, errorDescription, validatedURL);
-});
+  mainWindow.webContents.on("did-fail-load", (_event, errorCode, errorDescription, validatedURL) => {
+    console.error("Failed to load:", errorCode, errorDescription, validatedURL);
+  });
 
-mainWindow.webContents.on("render-process-gone", (_event, details) => {
-  console.error("Renderer gone:", details);
-});
+  mainWindow.webContents.on("render-process-gone", (_event, details) => {
+    console.error("Renderer gone:", details);
+  });
 
   mainWindow.on("closed", () => {
     mainWindow = null;
@@ -84,11 +107,11 @@ mainWindow.webContents.on("render-process-gone", (_event, details) => {
 app.whenReady().then(async () => {
   try {
     await startApiServerIfNeeded();
-    createWindow();
   } catch (error) {
-    console.error("Failed to start PCB Forge:", error);
-    createWindow();
+    console.error("Failed to start PCB Forge Catalog API:", error);
   }
+
+  createWindow();
 });
 
 app.on("window-all-closed", () => {
