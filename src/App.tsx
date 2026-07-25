@@ -12,6 +12,7 @@ import { NetlistPanel } from "./components/NetlistPanel";
 import { PropertiesPanel } from "./components/PropertiesPanel";
 import { RoutePanel } from "./components/RoutePanel";
 import { LiveCatalogSearch } from "./components/LiveCatalogSearch";
+import { SupplierSearchPanel } from "./components/SupplierSearchPanel";
 import { SchematicWorkspace, type SchematicToPcbPayload } from "./components/SchematicWorkspace";
 import { createComponent, createCustomFootprintComponent, createLibraryComponent } from "./factories/components";
 import { getLibraryComponentById, type LibraryComponentTemplate } from "./library/componentCatalog";
@@ -20,6 +21,8 @@ import type { AngleMode, Board, ComponentType, CopperZone, DesignRules, Footprin
 import { runDrc, type DrcIssue } from "./utils/drc";
 import { exportManufacturingPackage } from "./utils/manufacturingExport";
 import { GRID, getAbsolutePads, snap, uid } from "./utils/geometry";
+
+
 
 const BOARD_OFFSET = { x: 80, y: 80 };
 const BOARD_WIDTH = 760;
